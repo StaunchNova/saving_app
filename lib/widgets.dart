@@ -6,6 +6,13 @@ class FlutterBankSplash extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future.delayed(const Duration(seconds: 2), () {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => const FlutterBankLogin(),
+        ),
+      );
+    });
     return Scaffold(
       backgroundColor: Utils.mainThemeColor,
       body: Stack(
@@ -24,6 +31,24 @@ class FlutterBankSplash extends StatelessWidget {
             ),
           )
         ],
+      ),
+    );
+  }
+}
+
+class FlutterBankLogin extends StatefulWidget {
+  const FlutterBankLogin({Key? key}) : super(key: key);
+
+  @override
+  State<FlutterBankLogin> createState() => _FlutterBankLoginState();
+}
+
+class _FlutterBankLoginState extends State<FlutterBankLogin> {
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(
+        child: Text('login'),
       ),
     );
   }
