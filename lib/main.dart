@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:saving_app/widgets.dart';
 
 void main() {
@@ -12,7 +13,7 @@ class FlutterBankApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: FlutterBankSplash(),
+      home: const FlutterBankSplash(),
     );
   }
 }
