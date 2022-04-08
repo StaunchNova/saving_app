@@ -46,9 +46,57 @@ class FlutterBankLogin extends StatefulWidget {
 class _FlutterBankLoginState extends State<FlutterBankLogin> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('login'),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Container(
+        padding: const EdgeInsets.all(30),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: 80,
+              height: 80,
+              decoration: BoxDecoration(
+                border: Border.all(width: 7, color: Utils.mainThemeColor),
+                borderRadius: BorderRadius.circular(100),
+              ),
+              child: const Icon(
+                Icons.savings,
+                color: Utils.mainThemeColor,
+                size: 45,
+              ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            const Text(
+              'Welcome to',
+              style: TextStyle(color: Colors.grey, fontSize: 15),
+            ),
+            const Text(
+              'Flutter\nSavings Banks',
+              style: TextStyle(
+                  color: Utils.mainThemeColor,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold),
+            ),
+            Expanded(
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: const [
+                    Text(
+                      "Sign Into Your Bank Account",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.grey, fontSize: 12),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
