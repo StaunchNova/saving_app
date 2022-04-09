@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'utilities.dart';
 
@@ -161,9 +163,99 @@ class _FlutterBankLoginState extends State<FlutterBankLogin> {
                 ),
               ),
             ),
+            FlutterBankMainButton(
+              label: 'Sign In',
+              enabled: true,
+              onTap: () {},
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            FlutterBankMainButton(
+              icon: Icons.account_circle,
+              label: 'Register',
+              onTap: () {},
+              backgroundColor: Utils.mainThemeColor.withOpacity(0.05),
+              iconColor: Utils.mainThemeColor,
+              lableColor: Utils.mainThemeColor,
+            ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class FlutterBankMainButton extends StatelessWidget {
+  final Function? onTap;
+  final String? label;
+  final bool? enabled;
+  final IconData? icon;
+  final Color? backgroundColor;
+  final Color? iconColor;
+  final Color? lableColor;
+  const FlutterBankMainButton({
+    Key? key,
+    this.label,
+    this.onTap,
+    this.enabled = true,
+    this.backgroundColor = Utils.mainThemeColor,
+    this.icon,
+    this.iconColor = Colors.white,
+    this.lableColor = Colors.white,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(50),
+          child: Material(
+            color:
+                enabled! ? backgroundColor : backgroundColor!.withOpacity(0.5),
+            child: InkWell(
+              onTap: enabled!
+                  ? () {
+                      onTap!();
+                    }
+                  : null,
+              highlightColor: Colors.white.withOpacity(0.2),
+              splashColor: Colors.white.withOpacity(0.1),
+              child: Container(
+                padding: const EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Visibility(
+                      visible: icon != null,
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 20),
+                        child: Icon(
+                          icon,
+                          color: iconColor,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      label!,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: lableColor, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        )
+      ],
     );
   }
 }
